@@ -2,32 +2,36 @@
 
 Standalone multi-agent reference architecture for treating prompts as versioned, testable engineering artifacts rather than ad hoc text.
 
-## Repository map
+## Architecture
 
 ```text
-.github/workflows/tests.yml
-src/agents.py
-src/state.py
-src/gates.py
-src/orchestrator.py
-src/system.py
-src/run.py
-evals/evaluator.py
-examples/prompt_case.json
-benchmarks/README.md
-docs/ARCHITECTURE.md
-tests/
-SECURITY.md
-CONTRIBUTING.md
-CITATION.cff
-CHANGELOG.md
-CODE_OF_CONDUCT.md
-LICENSE
-pyproject.toml
+src/
+├── agents/          Prompt Design, Evaluation, Regression, Adversarial, Output agents
+├── tools/           deterministic prompt-evaluation record builders
+├── skills/          reusable prompt-engineering procedures
+├── memory/          prompt-version memory
+├── schemas/         prompt artifact contracts
+├── prompts/         engineering principles
+├── config/          regression and adversarial gates
+├── safety/          prompt-release policy
+├── observability/   trace summaries
+├── state.py
+├── gates.py
+├── orchestrator.py
+├── system.py
+└── run.py
 ```
 
-## Multi-agent team
-Prompt Design Agent, Evaluation Dataset Agent, Regression Agent, Adversarial/Injection Agent, Structured Output Agent, and Prompt Engineering Orchestrator.
+### Agents
+Prompt Design Agent, Evaluation Dataset Agent, Regression Agent, Adversarial/Injection Agent, Structured Output Agent, coordinated by the Prompt Engineering Orchestrator.
+
+### Skills
+Prompt design, evaluation-set assessment, regression analysis, adversarial analysis, output-contract validation.
+
+### Tools
+Prompt artifact builder, evaluation record, regression record, adversarial record, schema record.
+
+See `docs/AGENTS_TOOLS_SKILLS.md`.
 
 ```bash
 python -m src.run --example
